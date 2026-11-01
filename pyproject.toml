@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "turnkit"
+version = "0.1.0"
+description = "Turn-taking and participation features from diarized conversations"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Meihui (Lily) Wu" }]
+dependencies = ["numpy>=1.22", "pandas>=1.4"]
+keywords = ["conversation", "turn-taking", "diarization", "dyadic", "social interaction"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+turnkit = "turnkit.cli:main"
+
+[tool.setuptools]
+packages = ["turnkit"]
