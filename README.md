@@ -1,16 +1,30 @@
 # turnkit
 
+[![tests](https://github.com/lilywmh/turnkit/actions/workflows/tests.yml/badge.svg)](https://github.com/lilywmh/turnkit/actions/workflows/tests.yml)
+![python](https://img.shields.io/badge/python-3.9%2B-3b6ea8)
+![license](https://img.shields.io/badge/license-MIT-6b7280)
+
 **Turn-taking features from diarized conversations.**
 
 `turnkit` turns speaker-labeled timestamps (for example, WhisperX output) into
 interpretable measures of how a conversation is structured: how long people
-hold the floor, how often they switch, how they share speaking time, how much
-they overlap, and how this changes over the course of the conversation.
+hold the floor, how often they switch, how evenly they share speaking time, how
+much they overlap, and how all of this changes over the course of a conversation.
 
-It grew out of my work on what makes conversations between strangers feel
-connected, where the pace of turn exchange turned out to be one of the most
-stable behavioral correlates of how partners rated each other. The code here is
-a clean, data-free version of the feature extraction I use in that research.
+![Turns and speaker switches in the example conversation](docs/example.png)
+
+## Why
+
+How people take turns is one of the most reliable behavioral signals in
+conversation, yet most pipelines stop at a transcript. `turnkit` grew out of my
+research on what makes conversations between strangers feel connected, where
+the pace of turn exchange was among the most stable correlates of how partners
+rated each other. This is a clean, data-free version of the turn-structure
+features I use there, written so others can reuse them on their own recordings.
+
+- **Small and transparent.** NumPy and pandas only; every feature has a one-line definition below.
+- **Works with what you have.** WhisperX JSON or any CSV of `speaker, start, end[, text]`.
+- **Dynamics, not just averages.** The same features in equal time windows, to see how a conversation unfolds.
 
 ## Install
 
@@ -45,6 +59,7 @@ Try it on the included example:
 
 ```bash
 python examples/quickstart.py
+python examples/plot_example.py   # redraws the figure above (needs matplotlib)
 ```
 
 ## Input
